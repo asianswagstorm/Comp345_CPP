@@ -139,15 +139,14 @@ const List& operator + (const List &left, const List &right) {
 }
 
 std::ostream& operator<< (std::ostream& out, const List &right) {
-	nodePtr temporary = new Node; //node*
-	nodePtr head = new Node;
-	temporary = head;
-	while (temporary != NULL) {
+	nodePtr temporary = new Node; ///notePtr = Node*
+	for (temporary = right.head; temporary != 0; temporary = temporary->next) {
 		out << temporary->data << "\t";
-		temporary = temporary->next;
 	}
+
 	return out;
 }
+
 std::istream& operator>>(std::istream &in, List &ls) { 
 	nodePtr temporary = new Node;
 	in >> temporary->data ;

@@ -72,17 +72,17 @@ int main(){
 	// overloaded operator<< ostream
 	std::cout << obj1 << std::endl; // 0
 	
-	obj.display();
+	//obj.display();
 	std::cout << std::endl;
-	obj1.display();
+	//obj1.display();
 	
 	std::cout << "\n--------------------------------------------------\n"
 	<<std::endl << "--------------Using assignment operator-----------------"
 	<< std::endl << "\n--------------------------------------------------\n";
 	List obj2; //default object
 	obj2 = obj1; //List &List::operator=(const List &), created when created the copy contructor???
-	obj2.display(); //obj2.display();
-	//std::cout << obj1 << std::endl;
+	//obj2.display(); //obj2.display();
+	std::cout << obj2 << std::endl;
 	
 	std::cout << "\n--------------------------------------------------\n"
 	<<std::endl << "--------------Using stream input-----------------"
