@@ -25,18 +25,11 @@ typedef struct Node
 
 class List {
 	
-	//Operator overloading
-	friend const List& operator+ (const List &obj1, const List &obj2);
-	
-	friend const List& operator=(const List &obj1);
-	
-	friend std::ostream& operator<<(std::ostream &output, const List &ls);
-	friend std::istream& operator>>(std::istream &input, List &ls);
-	
 public:
 
 	List();
-	List(List * newObj);
+	//List(const List * ls);
+	List(const List& ls);
 	
 	~List();
 	void createnode(int);
@@ -47,6 +40,13 @@ public:
 	void delete_last();
 	void display();
 	int countNode();
+
+	friend const List& operator + (const List &left, const List &right);
+
+	friend std::ostream& operator<< (std::ostream& out, const List &right);
+
+	friend std::istream& operator>>(std::istream &input, List &ls);
+
 
 private:
 	nodePtr head; //Node*

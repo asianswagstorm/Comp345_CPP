@@ -4,8 +4,6 @@
 
 using namespace std;
 
-
-
 int main(){
 	List obj;
 	obj.createnode(25);
@@ -69,17 +67,22 @@ int main(){
 	<< std::endl << "--------------Using copy constructor-----------------"
 	<< std::endl << "\n--------------------------------------------------\n";
 	
-	List obj1(obj);
+	List obj1(obj);//copy contructor (works)
 	
-	// overloaded operator<<
-	std::cout << obj1 << std::endl;
+	// overloaded operator<< ostream
+	std::cout << obj1 << std::endl; // 0
+	
+	obj.display();
+	std::cout << std::endl;
+	obj1.display();
 	
 	std::cout << "\n--------------------------------------------------\n"
 	<<std::endl << "--------------Using assignment operator-----------------"
 	<< std::endl << "\n--------------------------------------------------\n";
 	List obj2; //default object
-	obj2 = obj1;
-	std::cout << obj1 << std::endl;
+	obj2 = obj1; //List &List::operator=(const List &), created when created the copy contructor???
+	obj2.display(); //obj2.display();
+	//std::cout << obj1 << std::endl;
 	
 	std::cout << "\n--------------------------------------------------\n"
 	<<std::endl << "--------------Using stream input-----------------"
@@ -102,11 +105,10 @@ int main(){
 	obj4.createnode(4);
 	obj4.createnode(5);
 	obj4.createnode(6);
-	std::cout << "obj3 List: " << std::endl << obj3 << std::endl;
-	std::cout << "obj4 List: " << std::endl << obj4 << std::endl;
-	std::cout << "obj3 + obj4: " << endl << obj3 + obj4 << std::endl;
-	
-	int x; cin >> x;
+	std::cout << "obj3 List: " << std::endl; obj3.display(); std::cout << std::endl;
+	std::cout << "obj4 List: " << std::endl; obj4.display(); std::cout <<std::endl;
+	//std::cout << "obj3 + obj4: " << endl;  obj3 + obj4; std::cout<< std::endl;
+
 	system("PAUSE");
 	return EXIT_SUCCESS;
 }

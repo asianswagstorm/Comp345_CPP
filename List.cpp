@@ -1,4 +1,5 @@
 #include <iostream>;
+#include <algorithm>;
 #include "List.h";
 
 List::List() {
@@ -11,14 +12,17 @@ List::List() {
 	this->tail = NULL; //the last node int the list  
 }
 
-List::List(List * newObj) { //copy constructor
-	this->head = newObj->head; //the first node int the list 
-
-	this->current = newObj->current;
-	this->previous = newObj->previous;
-	this->temporary = newObj->temporary; // temporary node pointer
-
-	this->tail = newObj->tail; //the last node int the list  
+/*List::List(const List * ls) { //copy constructor
+	this->head = ls->head; //the first node int the list 
+	this->current = ls->current;
+	this->previous = ls->previous;
+	this->temporary = ls->temporary; // temporary node pointer
+	this->tail = ls->tail; //the last node int the list  
+}*/
+//or
+List::List(const List& ls) { //copy constructor
+	this->head = NULL;
+	*this = ls; //assumes head pointer points to NULL
 }
 
 List::~List() {}
@@ -129,29 +133,24 @@ int List::countNode() {
 	}
 }
 
-const  const List& operator+ (const List &obj1, const List &obj2) {
-	List obj3 ; //the sum
-	/*
-	this->head = newObj->head; //the first node int the list 
-
-	this->current = newObj->current;
-	this->previous = newObj->previous;
-	this->temporary = newObj->temporary; // temporary node pointer
-
-	this->tail = newObj->tail; //the last node int the list  
-	*/
-	nodePtr nodepointer1;
-	nodePtr nodepointer2;
+const List& operator + (const List &left, const List &right) {
+	List sum;
+	return sum;
 }
 
-const List & operator=(const List &obj1) {
-
-	return *this;
+std::ostream& operator<< (std::ostream& out, const List &right) {
+	nodePtr temporary = new Node; //node*
+	nodePtr head = new Node;
+	temporary = head;
+	while (temporary != NULL) {
+		out << temporary->data << "\t";
+		temporary = temporary->next;
+	}
+	return out;
 }
-
-std::ostream& operator<<(std::ostream &output, const List &ls) {
-	output << ls->display();
-	return output;
-}
-std::istream& operator>>(std::istream &input, List &ls) {}
+std::istream& operator>>(std::istream &in, List &ls) { 
+	nodePtr temporary = new Node;
+	in >> temporary->data ;
+	ls.createnode(temporary->data);
+	return in; }
 
