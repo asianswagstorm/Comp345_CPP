@@ -133,17 +133,34 @@ int List::countNode() {
 	}
 }
 
-const List& operator + (const List &left, const List &right) {
-	List sum;
-	return sum;
-}
-
-std::ostream& operator<< (std::ostream& out, const List &right) {
-	nodePtr temporary = new Node; ///notePtr = Node*
-	for (temporary = right.head; temporary != 0; temporary = temporary->next) {
-		out << temporary->data << "\t";
+List& operator+(const List &left, const List &right) {
+	List sumList;
+	nodePtr node1 = new Node;
+	node1 = left.head;
+	nodePtr node2 = new Node;
+	node2 = right.head;
+	while(node1 != NULL && node2 != NULL){
+	int sum = (node1->data + node2->data);
+	sumList.createnode(sum);
+	node1 = node1->next;
+	node2 = node2->next;
 	}
 
+	if (node1 == NULL || node2 == NULL) {
+		delete(node1);
+		delete(node2);
+	}
+	sumList.display();
+	return sumList;
+}
+
+std::ostream& operator<<(std::ostream& out, const List &right) { //logic is same as display()
+	nodePtr temporary = new Node; ///notePtr = Node*
+	temporary = right.head;
+	while (temporary != NULL) {
+		out << temporary->data << "\t";
+		temporary = temporary->next;
+	}
 	return out;
 }
 
@@ -151,5 +168,6 @@ std::istream& operator>>(std::istream &in, List &ls) {
 	nodePtr temporary = new Node;
 	in >> temporary->data ;
 	ls.createnode(temporary->data);
-	return in; }
+	return in; 
+}
 

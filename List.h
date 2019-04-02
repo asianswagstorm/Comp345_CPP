@@ -24,9 +24,9 @@ typedef struct Node
 //typedef struct Node* nodeptr;
 
 class List {
-	friend const List& operator + (const List &left, const List &right);
+	friend List& operator+ (const List &left, const List &right);
 
-	friend std::ostream& operator<< (std::ostream& out, const List &right);
+	friend std::ostream& operator<<(std::ostream& out, const List &right);
 
 	friend std::istream& operator>>(std::istream &input, List &ls);
 public:

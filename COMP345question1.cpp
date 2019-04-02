@@ -105,9 +105,11 @@ int main(){
 	obj4.createnode(4);
 	obj4.createnode(5);
 	obj4.createnode(6);
-	std::cout << "obj3 List: " << std::endl; obj3.display(); std::cout << std::endl;
-	std::cout << "obj4 List: " << std::endl; obj4.display(); std::cout <<std::endl;
-	//std::cout << "obj3 + obj4: " << endl;  obj3 + obj4; std::cout<< std::endl;
+	std::cout << "obj3 List: " << std::endl << obj3 << std::endl;
+	std::cout << "obj4 List: " << std::endl << obj4 << std::endl;
+	std::cout << "obj3 + obj4: " << std::endl; //<< (obj3 + obj4) << std::endl; //
+	(obj3 + obj4);
+	std::cout << std::endl;
 
 	system("PAUSE");
 	return EXIT_SUCCESS;
