@@ -133,15 +133,15 @@ int List::countNode() {
 	}
 }
 
-List& operator+(const List &left, const List &right) {
+List operator+(const List &left, const List &right) {
 	List sumList;
 	nodePtr node1 = new Node;
 	node1 = left.head;
 	nodePtr node2 = new Node;
 	node2 = right.head;
 	while(node1 != NULL && node2 != NULL){
-	int sum = (node1->data + node2->data);
-	sumList.createnode(sum);
+	int sum = (node1->data + node2->data); //data for the new node about to create
+	sumList.createnode(sum);//creating the node and putting in an new list
 	node1 = node1->next;
 	node2 = node2->next;
 	}
@@ -150,7 +150,7 @@ List& operator+(const List &left, const List &right) {
 		delete(node1);
 		delete(node2);
 	}
-	sumList.display();
+	//sumList.display();
 	return sumList;
 }
 
