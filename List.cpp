@@ -22,7 +22,8 @@ List::List() {
 //or
 List::List(const List& ls) { //copy constructor
 	this->head = NULL;
-	*this = ls; //assumes head pointer points to NULL
+	*this = ls; //assumes head pointer points to NULL,
+	//*this is the new list object the copy constructor will make. assign it the the passed in  
 }
 
 List::~List() {}
@@ -152,6 +153,16 @@ List operator+(const List &left, const List &right) {
 	}
 	//sumList.display();
 	return sumList;
+}
+
+List& List::operator=(const List &right) {
+	nodePtr temporary = new Node;
+	temporary = right.head;
+	while (temporary != NULL) {
+		this->createnode(temporary->data);
+		temporary = temporary->next;
+	}
+	return *this;
 }
 
 std::ostream& operator<<(std::ostream& out, const List &right) { //logic is same as display()

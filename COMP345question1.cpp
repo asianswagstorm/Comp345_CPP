@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int main(){
+/*int main(){
 	List obj;
 	obj.createnode(25);
 	obj.createnode(50);
@@ -111,4 +111,4 @@ int main(){
 
 	system("PAUSE");
 	return EXIT_SUCCESS;
-}
+}*/

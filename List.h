@@ -25,7 +25,7 @@ typedef struct Node
 
 class List {
 	friend List operator+ (const List &left, const List &right);
-
+	List& operator=(const List &right);
 	friend std::ostream& operator<<(std::ostream& out, const List &right);
 
 	friend std::istream& operator>>(std::istream &input, List &ls);
